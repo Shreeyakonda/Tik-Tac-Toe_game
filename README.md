@@ -1,8 +1,8 @@
-🎮 Tic Tac Toe - Modern UI & CLI
+# 🎮 Tic Tac Toe - Modern UI & CLI
 A polished Tic Tac Toe game built using both Web Technologies (HTML/CSS/JavaScript) and Java (OOP CLI) — showcasing front-end design, JavaScript logic, and object-oriented programming in Java.
 This project demonstrates clean UI design, event-driven programming, and modular code structure.
 
-🚀 Tech Stack
+# 🚀 Tech Stack
 | Layer          | Tech Used                                                                       |
 | -------------- | ------------------------------------------------------------------------------- |
 | **Frontend**   | HTML5, CSS3, JavaScript (ES6+)                                                  |
@@ -10,8 +10,8 @@ This project demonstrates clean UI design, event-driven programming, and modular
 | **Java (CLI)** | Java SE, Scanner, Object-Oriented Design (OOP), Exception Handling              |
 
 
-✨ Features
-✅ Web Version (Modern UI)
+# ✨ Features
+# ✅ Web Version (Modern UI)
 Clean, minimalist design with glassmorphism effect.
 
 Responsive layout using CSS Grid and Flexbox.
@@ -24,7 +24,7 @@ Win/draw detection logic.
 
 Restart button for replaying the game.
 
-🖥️ Java CLI Version
+# 🖥️ Java CLI Version
 Fully interactive terminal-based game.
 
 Robust input handling using Scanner and exception management.
@@ -35,7 +35,7 @@ OOP structure using TicTacToeGame and Board classes.
 
 Win and draw detection using encapsulated logic.
 
-🧠 Concepts Demonstrated
+# 🧠 Concepts Demonstrated
 In Frontend:
 DOM Manipulation using vanilla JavaScript.
 
@@ -58,7 +58,7 @@ Reusability: Methods are modular and easy to extend (e.g., AI, multiplayer).
 
 Clean Code: Proper naming conventions and comments.
 
-🔄 How to Run
+# 🔄 How to Run
 Web Version:
 Clone the repository or download index.html.
 
@@ -66,7 +66,7 @@ Open the file in any browser (Chrome, Firefox, Edge).
 
 Start playing!
 
-📈 Future Improvements
+# 📈 Future Improvements
 Add AI opponent using Minimax algorithm.
 
 Track scores across multiple rounds.
@@ -75,4 +75,4 @@ Create React version with better state management.
 
 Implement multiplayer over local network.
 
-⭐ If you like this project, don't forget to give it a star on GitHub!
+# ⭐ If you like this project, don't forget to give it a star on GitHub!
