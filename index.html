@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tic Tac Toe - Modern UI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(135deg, #d4fc79, #96e6a1);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      color: #333;
+      width: 360px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      color: #222;
+      font-weight: 700;
+    }
+
+    #game {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .cell {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.1s;
+    }
+
+    .cell:hover {
+      background-color: #e8f5e9;
+      transform: scale(1.05);
+    }
+
+    #status {
+      font-size: 1.3em;
+      font-weight: 600;
+      color: #222;
+      min-height: 24px;
+      margin-top: 10px;
+    }
+
+    #reset {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 1em;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #reset:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tic Tac Toe</h1>
+    <div id="game"></div>
+    <div id="status"></div>
+    <button id="reset">Restart</button>
+  </div>
+
+  <script>
+    const game = document.getElementById('game');
+    const status = document.getElementById('status');
+    const resetBtn = document.getElementById('reset');
+
+    let board = ['', '', '', '', '', '', '', '', ''];
+    let currentPlayer = 'X';
+    let isGameActive = true;
+
+    const winningConditions = [
+      [0,1,2],[3,4,5],[6,7,8],  // Rows
+      [0,3,6],[1,4,7],[2,5,8],  // Columns
+      [0,4,8],[2,4,6]           // Diagonals
+    ];
+
+    function handleCellClick(index) {
+      if (board[index] !== '' || !isGameActive) return;
+
+      board[index] = currentPlayer;
+      renderBoard();
+      checkResult();
+      if (isGameActive) {
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        status.innerText = `Turn: ${currentPlayer}`;
+      }
+    }
+
+    function renderBoard() {
+      game.innerHTML = '';
+      board.forEach((cell, index) => {
+        const cellEl = document.createElement('div');
+        cellEl.classList.add('cell');
+        cellEl.innerText = cell;
+        cellEl.addEventListener('click', () => handleCellClick(index));
+        game.appendChild(cellEl);
+      });
+    }
+
+    function checkResult() {
+      let winnerFound = false;
+
+      for (let i = 0; i < winningConditions.length; i++) {
+        const [a, b, c] = winningConditions[i];
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+          winnerFound = true;
+          break;
+        }
+      }
+
+      if (winnerFound) {
+        status.innerText = `🎉 Player ${currentPlayer} wins!`;
+        isGameActive = false;
+        return;
+      }
+
+      if (!board.includes('')) {
+        status.innerText = "It's a draw!";
+        isGameActive = false;
+      }
+    }
+
+    function resetGame() {
+      board = ['', '', '', '', '', '', '', '', ''];
+      currentPlayer = 'X';
+      isGameActive = true;
+      status.innerText = `Turn: ${currentPlayer}`;
+      renderBoard();
+    }
+
+    resetBtn.addEventListener('click', resetGame);
+
+    // Initial render
+    resetGame();
+  </script>
+</body>
+</html>
